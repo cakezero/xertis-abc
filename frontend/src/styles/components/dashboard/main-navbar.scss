@@ -1,0 +1,104 @@
+@use "../../variables" as v;
+hr{
+    color: white;
+}
+.nav-footer-logout{
+    display: flex;
+    border-radius: 48px;
+    background-color: white;
+    align-items: center;
+    padding: 6px 12px;
+    height: 32px;
+    a{
+        color: red;
+        font-size: 0.75rem;
+        font-weight: 500;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+.nav-logo-div{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    a{
+        font-size: 1.6875rem;
+    }
+    img{
+        width: 22.5px;
+    }
+}
+.side-navbar-ul{
+    .nav-link{
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background-color: transparent !important;
+        transition: all 0.5s ease-in-out;
+        position: relative;
+        text-decoration: none;
+        color: white;
+    }
+    
+    .nav-link.active::before {
+        content: "";
+        position: absolute;
+        left: -16px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 24px;
+        background-color: white; 
+        border-radius: 5px; 
+        transition: all 0.5s ease-in-out;
+    }
+}
+.sidebar-navbar{
+    width: 18%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: v.$purple;
+    font-family: v.$sf-pro;
+}
+
+@media (max-width: 576px){
+    .sidebar-body{
+        width: 100% !important;
+        background-color: #101828;
+        .hover-button{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            filter: invert(1);
+        }
+        .sidebar-body-main{
+            background-color: v.$purple;
+            width: 272px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            .sidebar-body-main-content{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 90%;
+                padding-top: 0px;
+            }
+        }
+    }
+    .nav-logo-div{
+        gap: 10px;
+    }
+    .offcanvas-header{
+        padding: 18px 8px;
+    }
+    .side-navbar-ul{
+        gap: 8px;
+        margin-top: 40px;
+    }
+}

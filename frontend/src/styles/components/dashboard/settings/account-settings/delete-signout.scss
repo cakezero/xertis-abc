@@ -1,0 +1,33 @@
+@use '../../../../variables' as v;
+
+.delete-account{
+    display: flex;
+    justify-content: end;
+    width: 73.2%;
+    div{
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        .delete-link{
+            color: #DF1C41;
+            margin: 0;
+            cursor: pointer;
+        }
+        .signout-btn{
+            border: none;
+            background-color: #DF1C41;
+            color: white;
+            border-radius: 12px;
+            padding: 8px 15px;
+            font-size: 0.875rem;
+        }
+    }
+}
+
+@media (max-width: 576px){
+    .delete-account{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+}

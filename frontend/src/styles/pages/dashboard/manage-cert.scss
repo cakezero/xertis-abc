@@ -1,0 +1,40 @@
+@use '../../variables' as v;
+.manage-cert{
+    margin-left: 18%;
+    padding: 0px 32px;
+    .manage-cert-body{
+        .manage-cert-history-header{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 32px;
+            background-color: #F8F9FB;
+            border: 1px solid #EEEFF2;
+            padding: 12px;
+            padding-right: 25%;
+            border-radius: 10px;
+            div{
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                color: #666D80;
+                font-weight: 500;
+                font-family: v.$sf-pro;
+                font-size: 0.875rem;
+            }
+        }
+    }
+}
+
+@media(max-width: 576px){
+    .manage-cert{
+        margin-left: 0;
+        padding: 0px 16px;
+        .manage-cert-body{
+            .manage-cert-history-header{
+                width: 100%;
+                padding: 10px;
+                padding-right: 10%;
+            }
+        }
+    }
+}

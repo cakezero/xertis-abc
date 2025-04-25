@@ -1,0 +1,212 @@
+@use '../../variables' as v;
+.share-certificate{
+    width: 300px;
+    padding: 24px 16px;
+    padding-bottom: 12px;
+    background-color: #EEF2FF;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    align-items: start;
+    gap: 16px;
+    
+    hr{
+        border: 0.5px solid #A3A3A3;
+        width: 100%;
+        margin: 0;
+    }
+    .share-certificate-header{
+        h2{
+            font-size: 1.125rem;
+            font-family: v.$new-york-large;
+            font-weight: 500;
+        }
+        p{
+            font-size: 0.75rem;
+            font-family: v.$sf-pro;
+            margin: 0;
+        }
+    }
+
+    .share-certificate-email{
+        width: 100%;
+        font-family: v.$sf-pro;
+        .share-certificate-email-header{
+            margin-bottom: 5px;
+            font-size: 0.625rem;
+            font-weight: 510;
+        }
+        .share-certificate-email-invite{
+            display: flex;
+            align-items: center;
+            .share-certificate-inputs{
+                display: flex;
+                width: 176px;
+                align-items: center;
+                gap: 8px;
+                background-color: #F9FAFB;
+                mix-blend-mode: multiply;
+                border-radius: 16px;
+                border: 1px solid #EAECF0;
+                padding: 4px 16px;
+                padding-left: 4px;
+                margin-right: 12px;
+                .input-certificate{
+                    position: relative;
+                    input{
+                        width: 59px;
+                        height: 20px;
+                        font-size: 0.75rem;
+                        padding: 2px 3px;
+                        padding-left: 8px;
+                        border-radius: 16px;
+                        border: 1px solid #D0D5DD;
+                    }
+                    .clear-button{
+                        position: absolute;
+                        right: 3px;
+                        top: 55%;
+                        transform: translateY(-50%);
+                        cursor: pointer;
+                        font-size: 9px;
+                        font-weight: 700;
+                        background: none;
+                        border: none;
+                        color: gray;
+                        padding: 0;
+                        padding: 0px 3px;
+                        background-color: white;
+                        height: auto;
+                        width: auto;
+                        border-radius: 0;
+                        border-top-right-radius: 6px;
+                        border-bottom-right-radius: 6px;
+                    }
+                }
+            }
+            p{
+                margin: 0;
+                font-size: 0.75rem;
+            }
+            .share-invite-button{
+                height: 28px;
+                padding: 8px 12px;
+                color: white;
+                background-color: v.$purple;
+                border: 1px solid #818CF8;
+                font-size: 0.625rem;
+                font-weight: 500;
+                border-radius: 48px;
+                white-space: nowrap;
+            }
+        }
+
+        .share-certificate-specify{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 16px;
+            background-color: #F9FAFB;
+            mix-blend-mode: multiply;
+            align-items: center;
+            border-radius: 16px;
+            border: 1px solid #EAECF0;
+            height: 30px;
+            padding: 4px;
+            padding-left: 12px;
+            position: relative;
+            p{
+                margin: 0;
+                font-size: 0.75rem;
+            }
+            .specify-share-select{
+                background-size: 1rem;
+                width: 81px;
+                height: 22px;
+                font-size: 0.75rem;
+                font-weight: 500;
+                display: flex;
+                gap: 4px;
+                padding: 2px 6px;
+                padding-left: 8px;
+                border-radius: 16px;
+                background-image: none;
+                appearance: none;
+                cursor: pointer;
+            }
+            .specify-share-select:focus{
+                outline: none;
+                box-shadow: none; /* Removes any focus glow */
+                border-color: inherit;
+            }
+            .position-absolute{
+                pointer-events: none;
+                font-size: 10px;
+                color: v.$purple;
+            }
+            .specify-share-select:active{
+                box-shadow: none;
+            }
+        }
+    }
+
+    .share-certificate-link{
+        width: 100%;
+        h2{
+            font-size: 0.625rem;
+            font-weight: 510;
+        }
+        .share-certificate-link-div{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #EAECF0;
+            background-color: #F9FAFB;
+            mix-blend-mode: multiply;
+            padding: 4px;
+            padding-left: 12px;
+            border-radius: 16px;
+            .link-placeholder{
+                margin: 0;
+                font-size: 0.625rem;
+                color: #A3A3A3;
+            }
+            .copy-tag{
+                cursor: pointer;
+                width: 60px;
+                height: 22px;
+                padding: 2px 6px;
+                padding-left: 8px;
+                background-color: #FFFFFF;
+                border: 1px solid #D0D5DD;
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 4px;
+                p{
+                    font-size: 0.75rem;
+                    margin: 0;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+}
+
+@media(max-width: 576px){
+    //Generate certificate url step styles
+    .generate-url-content{
+        h2{
+            width: 100%;
+        }
+        .generated-certificate{
+            flex-direction: column;
+            align-items: center;
+        }
+        .certificate-img{
+            width: 300px !important;
+            width: 100%;
+        }
+    }
+}

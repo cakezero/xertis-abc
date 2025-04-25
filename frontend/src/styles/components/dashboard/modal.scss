@@ -1,0 +1,98 @@
+@use '../../variables' as v;
+.modal-overlay {
+    position: fixed;
+    z-index: 1000;
+    backdrop-filter: blur(16px);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    .modal {
+        position: static;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        border-radius: 32px;
+        background-color: white;
+        padding: 28px;
+        text-align: center;
+        width: auto;
+        height: auto;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        h2{
+            font-family: v.$new-york-large;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 31px;
+        }
+        .modal-buttons{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            .modal-button-wallet{
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                color: v.$purple;
+                background-color: transparent;
+                border: 1px solid v.$purple;
+                border-radius: 48px;
+                height: 56px;
+                font-family: v.$sf-pro;
+                font-weight: 590;
+                img{
+                    width: 13%;
+                    position: absolute;
+                    left: 10px !important;
+                    height: 32px;
+                }
+            }
+            .modal-buttons-show-more{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                p{
+                    color: #7B7B7B;
+                    margin: 0;
+                    cursor: pointer;
+                }
+                .modal-close-button{
+                    background-color: v.$purple;
+                    color: white;
+                    border: none;
+                    padding: 5px 20px;
+                    border-radius: 48px;
+                }
+            }
+    }
+}
+
+@media (max-width: 576px){
+    .modal-overlay{
+        .modal{
+            padding: 28px 16px;
+            gap: 30px;
+            width: 342px;
+            height: 454px;
+            h2{
+                margin: 0;
+            }
+            .modal-buttons{
+                .modal-button-wallet{
+                    padding: 12px 24px;
+                    img{
+                        left: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

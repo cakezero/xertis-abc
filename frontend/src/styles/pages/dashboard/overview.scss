@@ -1,0 +1,45 @@
+@use '../../variables' as v;
+.overview{
+    margin-left: 18%;
+    .overview-body{
+        padding: 0px 32px;
+        .overview-title{
+            .overview-title-link{
+                width: 239px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                button{
+                    width: 213px;
+                    height: 48px;
+                    background-color: #EEF2FF;
+                    color: v.$purple;
+                    display: flex;
+                    gap: 8px;
+                    align-items: center;
+                    border: none;
+                    padding: 12px 20px;
+                    border-radius: 48px;
+                    img{
+                        filter: brightness(0) saturate(100%) invert(40%) sepia(18%) saturate(4105%) hue-rotate(214deg) brightness(97%) contrast(94%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 576px){
+    .overview{
+        margin: 0;
+        .overview-body{
+            padding: 16px;
+            .overview-title{
+                border: none;
+                .overview-title-link{
+                    justify-content: end;
+                }
+            }
+        }
+    }
+}

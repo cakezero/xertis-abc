@@ -1,0 +1,101 @@
+@use "./variables" as v;
+.signup{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    .signup-left-section, .signup-right-section{
+        height: 100%;
+    }
+    .signup-left-section{
+        display: flex;
+        flex-direction: column;
+        padding: 32px;
+        .signup-left-section-logo{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            height: 50px;
+            text-decoration: none;
+            p{
+                margin: 0;
+                font-size: 1.5rem;
+                font-weight: 500;
+                color: #312E81;
+            }
+        }
+        .signup-left-section-form{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 50px;
+            gap: 32px;
+            justify-content: center;
+            align-items: center;
+            .form-header{
+                margin-bottom: 20px;
+                h2{
+                    font-family: v.$new-york-large;
+                    font-weight: 600;
+                    font-size: 2.25rem;
+                }
+                p{
+                    font-family: v.$sf-pro;
+                    font-weight: 400;
+                    margin: 0;
+                }
+            }
+            .signup-left-section-existing-account{
+                p{
+                    font-family: v.$new-york;
+                    color: #475467;
+                    font-size: 0.9rem;
+                    .custom-login-link{
+                        text-decoration: none;
+                        margin-left: 4px;
+                        color: #4F46E5;
+                        font-weight: 600;
+                        font-family: Arial, Helvetica, sans-serif;
+                    }
+                }
+            }
+        }
+        .signup-left-section-footer-link{
+            display: flex;
+            height: 100%;
+            align-items: end;
+            p{
+                margin: 0;
+                color: #475467;
+                font-family: v.$new-york;
+                font-size: 0.875rem;
+                font-weight: 300;
+            }
+        }
+    }
+    .signup-right-section{
+        flex-direction: column;
+        padding: 0px 70px;
+        padding-top: 40px;
+        background-color: #F2F4F7;
+        position: relative;
+        .signup-right-section-top{
+            h2{
+                font-family: v.$new-york-large;
+                font-weight: 400;
+                font-size: 1.875rem;
+                line-height: 150%;
+            }
+        }
+        .signup-right-section-bottom{
+            background-image: url('../assets/signin-login/stats-dashboard.svg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            width: 92%;
+            height: 61%;
+            bottom: 0;
+            right: 0;
+            border-top-left-radius: 10px;
+        }
+    }
+}

@@ -1,0 +1,101 @@
+@use '../../../../variables' as v;
+.connected-wallet{
+    width: 73.7%;
+    font-family: v.$sf-pro;
+    .wallet{
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        border-bottom: 1px solid #EAECF0; 
+        padding-bottom: 32px;
+        .wallet-header{
+            h1{
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: #101828;
+                margin-bottom: 4px;
+            }
+            p{
+                margin: 0;
+                color: #666D80;
+                font-size: 0.875rem;
+            }
+        }
+        .update-wallet{
+            button{
+                white-space: nowrap;
+                border: none;
+                background-color: v.$purple;
+                color: white;
+                padding: 8px 16px;
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 0.875rem;
+                font-weight: 500;
+                height: 44px;
+            }
+        }
+    }
+
+    .wallet-address{
+        width: 77%;
+        margin-top: 32px;
+        padding: 16px 20px;
+        background-color: #EEF2FF;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .wallet-address-title{
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            color: #666D80;
+            p{
+                margin: 0;
+            }
+            img{
+                width: 40px;
+                margin-right: 12px;
+            }
+        }
+        .wallet-address-delete{
+            cursor: pointer;
+        }
+    }
+}
+
+@media (max-width: 576px){
+    .connected-wallet{
+        width: 100%;
+        .wallet-address{
+            width: 100%;
+            .wallet-address-title{
+                .user-name{
+                    display: flex;
+                    flex-direction: column;
+                    h3{
+                        font-size: 0.75rem;
+                        font-weight: 600;
+                        margin: 0;
+                    }
+                    p{
+                        margin: 0;
+                        font-size: 0.625rem;
+                        font-weight: 500;
+                    }
+                }
+                img{
+                    width: 32px;
+                }
+            }
+            .wallet-address-delete{
+                img{
+                    width: 16px;
+                }
+            }
+        }
+    }
+}

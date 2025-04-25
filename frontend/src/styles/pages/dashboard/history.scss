@@ -1,0 +1,146 @@
+@use '../../variables' as v;
+.history{
+    margin-left: 18%;
+    padding: 0px 32px;
+    .history-body{
+        .history-title{
+            .history-title-link{
+                width: 239px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                button{
+                    width: 213px;
+                    height: 48px;
+                    background-color: #EEF2FF;
+                    color: v.$purple;
+                    display: flex;
+                    gap: 8px;
+                    align-items: center;
+                    border: none;
+                    padding: 12px 20px;
+                    border-radius: 48px;
+                    img{
+                        filter: brightness(0) saturate(100%) invert(40%) sepia(18%) saturate(4105%) hue-rotate(214deg) brightness(97%) contrast(94%);
+                    }
+                }
+            }
+        }
+        .history-activity{
+            margin-top: 32px;
+            .history-header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 16px 20px;
+                border-bottom: 1px solid #DFE1E6;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                background-color: #EEEFF2;
+                .history-header-text{
+                    display: flex;
+                    gap: 8px;
+                    p{
+                        margin: 0;
+                        color: #666D80;
+                        font-weight: 510;
+                    }
+                }
+                .history-header-button{
+                    img{
+                        cursor: pointer;
+                    }
+                }
+            }
+            .history-activity-item{
+                .history-activity-item-div{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    border-bottom: 1px solid #DFE1E6;
+                    padding: 12px;
+                    padding-left: 16px;
+                    height: 64px;
+                    .item-text, .item-timer{
+                        display: flex;
+                        align-items: center;
+                        gap: 16px;
+                        p{
+                            margin: 0;
+                            color: #0D0D12;
+                            font-size: 0.875rem;
+                            font-weight: 500;
+                        }
+                        span{
+                            color: #666D80;
+                            margin: 0;
+                            font-size: 0.875rem;
+                            font-weight: 500;
+                            margin-left: -6px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 576px){
+    .history{
+    margin: 0;
+    padding: 0px 16px;
+    .history-body{
+        .history-title{
+            border: none;
+            .history-title-link{
+                justify-content: end;
+            }
+        }
+        .history-activity{
+            margin-top: 24px;
+            .history-header{
+                .history-header-text{
+                    p{
+                        font-size: 0.875rem;
+                    }
+                    .recent-img{
+                        width: 18px ;
+                    }
+                }
+                .history-header-button{
+                    .refresh-img{
+                        width: 24px;
+                    }
+                }
+            }
+
+            .history-activity-item{
+                .history-activity-item-div{
+                    padding-left: 12px;
+                    gap: 10px;
+                    .item-timer{
+                        gap: 12px;
+                        img{
+                            width: 16px;
+                        }
+                        span{
+                            font-size: 0.75rem;
+                            white-space: nowrap;
+                        }
+                    }
+                    .item-text{
+                        gap: 6px;
+                        img{
+                            width: 24px;
+                        }
+                        p{
+                            font-size: 0.75rem;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+}

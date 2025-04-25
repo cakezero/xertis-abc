@@ -1,0 +1,160 @@
+@use "../../variables" as v;
+.hero{
+    background-image: url('../../../assets/Hero\ bg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    font-family: v.$sf-pro;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    nav{
+        padding-top: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .right-section{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            p{
+                margin: 0;
+                color: white;
+                font-weight: 510px;
+                font-size: 1.5rem;
+            }
+        }
+        .left-section{
+            a{
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+    .hero-intro{
+        display: flex;
+        height: 60%;
+        .hero-intro *{
+            margin: 0;
+        }
+        .hero-title{
+            align-self: end;
+            h1{
+                font-size: 260px;
+                margin: 0;
+                font-family: v.$new-york-E-large;
+                font-weight: 600;
+            }
+        }
+        .hero-content{
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: space-between;
+            .hero-content-text{
+                display: flex;
+                flex-direction: column;
+                width: 70%;
+                gap: 16px;
+                h2{
+                    margin: 0;
+                    font-family: v.$new-york-E-large;
+                    font-weight: 500;
+                    font-size: 48px;
+                    width: 483px;
+                }
+                p{
+                    font-family: v.$sf-pro;
+                    font-size: 24px;
+                    line-height: 28px;
+                    width: 300px;
+                    align-self: center;
+                    font-weight: 508px;
+                }
+            }
+        }
+        .hero-content-button{
+            align-self: end;
+            margin-bottom: 10%;
+        }
+    }
+    .custom-link{
+        text-decoration: none;
+        display: flex;
+        gap: 11px;
+        align-items: center;
+        color: white;
+        background-color: #6366F1;
+        width: 156px;
+        height: 48px;
+        border-radius: 48px;
+        padding: 12px 20px;
+        p{
+            margin: 0;
+        }
+        img{
+            width: 14px;
+        }
+    }
+}
+
+@media (max-width: 576px){
+    .hero{
+        padding-bottom: 47px;
+        background-image: url('../../../assets/Hero\ bg\ -\ mobile.svg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        .hero-intro{
+            flex-direction: column-reverse;
+            .hero-content{
+                .hero-content-text{
+                    width: 100%;
+                    h2{
+                        font-size: 2rem !important;
+                        width: 100% !important;
+                        width: 309px;
+                        line-height: 38px;
+                    }
+                    p{
+                        font-size: 1.3rem;
+                        width: 229px;
+                    }
+                }
+            }
+            .hero-title{
+                align-self: start;
+                width: 100%;
+                div{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 32px;
+                    h1{
+                        font-size: 6rem;
+                    }
+                    a{
+                        text-decoration: none;
+                        display: flex;
+                        gap: 11px;
+                        align-items: center;
+                        color: white;
+                        background-color: #6366F1;
+                        width: 156px;
+                        height: 48px;
+                        border-radius: 48px;
+                        padding: 12px 20px;
+                        align-self: end;
+                        p{
+                            margin: 0;
+                        }
+                        img{
+                            width: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
