@@ -13,3 +13,7 @@ export const EMAIL_SERVICE = process.env.EMAIL_SERVICE || "gmail";
 export const EMAIL_USER = process.env.EMAIL_USER!;
 
 export const EMAIL_PASSWORD = process.env.EMAIL_PASSWORD!;
+
+export const PINATA_SECRET = process.env.PINATA_SECRET!;
+
+export const PINATA_API_KEY = process.env.PINATA_API_KEY!;
