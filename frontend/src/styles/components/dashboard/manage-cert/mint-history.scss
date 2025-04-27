@@ -1,0 +1,109 @@
+@use '../../../variables' as v;
+body{
+    padding: 0 !important;
+}
+.mint-history{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 12px;
+    .mint-history-item{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        border: 1px solid #DFE1E6;
+        border-radius: 12px;
+        padding: 0px 18px;
+        p{
+            margin: 0;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .mint-item-name{
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 22.4%;
+            height: 56px;
+        }
+        .mint-item-right-section{
+            display: flex;
+            width: 40%;
+            justify-content: space-between;
+            .share-certificate-link-div{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border: 1px solid #EAECF0;
+                background-color: #F9FAFB;
+                mix-blend-mode: multiply;
+                padding: 4px;
+                padding-left: 12px;
+                border-radius: 16px;
+                gap: 10px;
+                .link-placeholder{
+                    margin: 0;
+                    font-size: 0.625rem;
+                    color: #A3A3A3;
+                }
+                .copy-tag{
+                    cursor: pointer;
+                    width: 60px;
+                    height: 22px;
+                    padding: 2px 6px;
+                    padding-left: 8px;
+                    background-color: #FFFFFF;
+                    border: 1px solid #D0D5DD;
+                    border-radius: 16px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 4px;
+                    p{
+                        font-size: 0.75rem;
+                        margin: 0;
+                        font-weight: 500;
+                    }
+                }
+            }
+            .edit-button{
+               .three-dots{
+                    border: none;
+               }
+               ul{
+                border-radius: 8px;
+                border: 1px solid #EAECF0;
+                li{
+                    cursor: pointer;
+                    font-family: v.$sf-pro;
+                    img{
+                        margin-right: 8px;
+                    }
+                }
+               }
+            }
+        }
+    }
+}
+@media(max-width: 576px){
+    .mint-history{
+        .mint-history-item{
+            padding: 0px 5px;
+            .mint-item-name{
+                width: 35%;
+            }
+            .mint-item-right-section{
+                width: 30%;
+            }
+            p{
+                font-size: 0.75rem;
+            }
+            .edit-button{
+                .three-dots{
+                    padding: 0;
+                }
+            }
+        }
+    }
+}

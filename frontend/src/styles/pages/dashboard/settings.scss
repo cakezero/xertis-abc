@@ -1,0 +1,58 @@
+@use '../../variables' as v;
+
+.settings{
+    margin-left: 18%;
+    padding: 0px 32px;
+    padding-bottom: 50px;
+    .settings-body{
+        .settings-title{
+            display: flex;
+            margin-top: 40px;
+            border-bottom: 1px solid #EAECF0;
+            height: 38px;
+            gap: 16px;
+            color: #666D80;
+            font-size: 0.875rem;
+            width: 95%;
+            .page{
+                cursor: pointer;  
+                position: relative;
+
+                &.active{
+                    color: v.$purple;
+                    &::after {
+                        content: "";
+                        transition: all 0.5s ease-in-out;
+                        position: absolute;
+                        bottom: -2px;
+                        left: 0;
+                        width: 100%;
+                        height: 2px;
+                        background-color: v.$purple;
+                      }
+                }
+            }
+        }
+        .settings-main{
+            margin-top: 40px;
+        }
+    }
+}
+
+@media (max-width: 576px){
+    .settings{
+        margin: 0;
+        padding: 0px 16px;
+        padding-bottom: 50px;
+        .settings-body{
+            .settings-title{
+                width: 100%;
+                margin-top: 30px;
+                justify-content: space-between;
+                .page{
+                    font-size: 0.75rem;
+                }
+            }
+        }
+    }
+}

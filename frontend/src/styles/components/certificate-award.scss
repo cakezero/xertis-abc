@@ -1,0 +1,99 @@
+@use '../variables' as v;
+
+.certificate-award{
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    background-color: white;
+    padding-top: 28px;
+    padding-bottom: 6px;
+    p{
+        margin: 0;
+    }
+    .certificate-award-title{
+        h1{
+            font-family: v.$new-york-large;
+            font-weight: 500;
+            font-size: 1.25rem;
+            text-align: center;
+            line-height: 15px;
+            margin-bottom: 16px;
+            span{
+                font-size: 0.625rem;
+                font-weight: 400;
+            }
+        }
+        p{
+            font-size: 0.5rem;
+            font-family: v.$sf-pro;
+        }
+    }
+
+    .certificate-award-name{
+        width: 56%;
+        text-align: center;
+        h1{
+            font-size: 0.625rem;
+            color: v.$purple;
+        }
+        p{
+            font-size: 0.5rem;
+        }
+    }
+
+    .certificate-award-img{
+        width: 10%;
+        font-size: 0.5rem;
+        img{
+            margin-bottom: 15px;
+            width: 66.6%;
+        }
+        .certificate-award-img-date{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            gap: 5px;
+            .date-placeholder{
+                width: 100%;
+                border-bottom: 1px solid black;
+            }
+        }
+    }
+    .design-left, .design-right, .qr-code-img{
+        position: absolute;
+    }
+    .design-left{
+        bottom: 0;
+        left: 0;
+    }
+    .design-right{
+        top: 0;
+        right: 0;
+    }
+    .qr-code-img{
+        top: 245px;
+        left: 357px;
+    }
+}
+
+@media(max-width: 576px){
+    .certificate-award{
+        .qr-code-img{
+            left: 340px;
+        }
+    }
+}
+@media(max-width: 390px){
+    .certificate-award{
+        .qr-code-img{
+            left: 280px;
+            top: 270px;
+        }
+    }
+}

@@ -1,0 +1,88 @@
+@use '../../../variables' as v;
+
+.overview-modal{
+    position: fixed;
+    z-index: 1000;
+    backdrop-filter: blur(16px);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .modal{
+        width: 420px;
+        position: static;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        border-radius: 32px;
+        background-color: white;
+        padding: 32px 24px;
+        text-align: center;
+        height: auto;
+        gap: 48px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        h1{
+            font-family: v.$new-york-large;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .modal-withdraw{
+            font-family: v.$sf-pro;
+            label{
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                font-size: 0.875rem;
+                font-weight: 500;
+                gap: 8px;
+                margin-bottom: 6px;
+                position: relative;
+                input{
+                    width: 100%;
+                    padding: 8px 12px;
+                    padding-left: 35px;
+                    border-radius: 48px;
+                    border: 1px solid #E5E5E5;
+                }
+                img{
+                    position: absolute;
+                    top: 38px;
+                    left: 10px;
+                }
+            }
+            .modal-balance{
+                display: flex;
+                justify-content: space-between;
+                font-size: 0.625rem;
+                p{
+                    margin: 0;
+                }
+            }
+        }
+        button{
+            border: none;
+            border-radius: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            padding: 12px 20px;
+            gap: 8px;
+            color: white;
+            background-color: v.$purple;
+        }
+    }
+}
+
+@media (max-width: 576px){
+    .overview-modal{
+        padding: 0px 16px;
+        backdrop-filter: blur(50px) !important;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+}

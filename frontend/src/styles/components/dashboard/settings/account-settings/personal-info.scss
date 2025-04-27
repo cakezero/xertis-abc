@@ -1,0 +1,89 @@
+@use '../../../../variables' as v;
+.personal-info{
+    width: 73.7%;
+    font-family: v.$sf-pro;
+    margin-top: 48px;
+    .personal-info-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        border-bottom: 1px solid #EAECF0; 
+        padding-bottom: 32px;
+        .header-title{
+            h1{
+                font-size: 1.25rem;
+                font-weight: 600;
+                color: #101828;
+                margin-bottom: 4px;
+            }
+            p{
+                margin: 0;
+                color: #666D80;
+                font-size: 0.875rem;
+            }
+        }
+        .update-profile{
+            button{
+                white-space: nowrap;
+                border: none;
+                background-color: v.$purple;
+                color: white;
+                padding: 8px 16px;
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 0.875rem;
+                font-weight: 500;
+                height: 44px;
+                p{
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .form-info{
+        margin-top: 32px;
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            .input-group{
+                display: flex;
+                align-items: start;
+                justify-content: space-between;
+                label{
+                    font-size: 1rem;
+                    font-weight: 500;
+                }
+                input{
+                    border: 1px solid #DFE1E6;
+                    font-size: 0.875rem;
+                    color: #666D80;
+                    width: 77.5%;
+                    padding: 16px 14px;
+                    border-radius: 12px !important;
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 576px){
+    .personal-info{
+        width: 100%;
+        .form-info{
+            form{
+                .input-group{
+                    flex-direction: column;
+                    gap: 8px;
+                    input{
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,185 @@
+@use '../../variables' as v;
+//The styles below are applied to all three steps in the certification creation process.
+.certificate-form{
+    .certificate-form-header{
+        padding-bottom: 12px;
+        border-bottom: 0.5px solid black;
+        font-family: v.$sf-pro;
+        p{
+            font-size: 0.875rem;
+            color: #A4ABB8;
+            font-weight: 510;
+        }
+        h2{
+            font-size: 1.5rem;
+            font-weight: 510;
+        }
+    }
+
+    .certificate-form-content{
+        font-family: v.$sf-pro;
+        margin-top: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        .certificate-type-div{
+            .certificate-type-div-title{
+                font-size: 1rem;
+                font-weight: 510;
+            }
+            .certificate-form-type{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                h2{
+                    font-size: 0.875rem;
+                    font-weight: 500;
+                    margin: 0;
+                }
+                .certificate-type{
+                    padding: 6px 16px;
+                    display: flex;
+                    align-items: center;
+                    border: 1px solid v.$purple;
+                    border-radius: 6px;
+                    color: v.$purple;
+                    gap: 6px;
+                    input[type="radio"] {
+                        accent-color: v.$purple; /* Change to purple */
+                      }
+                }
+            }
+        }
+        .certificate-input{
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            position: relative;
+            img{
+                position: absolute;
+                top: 38px;
+                left: 16px;
+                width: 20px;
+            }
+            input{
+                height: 40px;
+                width: 100%;
+                padding: 8px 12px;
+                padding-left: 50px;
+                border: 1px solid #E5E5E5;
+                border-radius: 48px;
+                accent-color: v.$purple;
+            }
+            input[type="date"] {
+                text-align: left; 
+                direction: rtl; 
+                text-align-last: left; 
+            }
+        }
+    }
+    .certificate-form-review{
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        height: 40px;
+        padding: 8px 12px;
+        padding-left: 16px;
+        border: 1px solid #E5E5E5;
+        border-radius: 48px;
+    }
+    button{
+        height: 32px;
+        padding: 6px 16px;
+        align-self: end;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: white;
+        background-color: v.$purple;
+        border: none;
+        font-size: 0.875rem;
+        font-weight: 500;
+        border-radius: 48px;
+        img{
+            width: 10px;
+        }
+    }
+    //Style for the review and submit section navigation buttons
+    .review-certificate-button{
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    //Style for the generate certificate section
+    .generate-url-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-top: 10%;
+        .generate-certificate-title{
+            font-size: 1.5rem;
+            font-family: v.$new-york-large;
+            font-weight: 500;
+            text-align: center;
+            width: 69%;
+        }
+        .generated-certificate{
+            display: flex;
+            gap: 24px;
+            justify-content:  center;
+            width: 100%;
+            img{
+                width: 100%;
+            }
+            .certificate-img{
+                width: 426px;
+            }
+        }
+    }
+} 
+
+@media (max-width: 576px){
+    .certificate-form{
+        width: 100%;
+        .certificate-form-content{
+            .certificate-type-div{
+                .certificate-type-div-title{
+                    margin-bottom: 12px;
+                }
+                .certificate-form-type{
+                    display: grid;
+                    grid-template-columns: auto auto;
+                    width: fit-content;
+                    column-gap: 16px;
+                    .certificate-type{
+                        display: flex;
+                        justify-content: start;
+                        width: fit-content;
+                    }
+                }
+            }
+        }
+        //Generate certificate url step styles
+        .generate-url-content{
+            h2{
+                width: 100%;
+            }
+            .generated-certificate{
+                flex-direction: column;
+                align-items: center;
+            }
+            .certificate-img{
+                width: 300px !important;
+                width: 100%;
+            }
+        }
+        //End
+    }
+}

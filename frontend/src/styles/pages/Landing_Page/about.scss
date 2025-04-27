@@ -1,0 +1,78 @@
+@use "../../variables" as v;
+.about{
+    display: flex;
+    margin-top: 100px;
+    align-items: start;
+    justify-content: space-between;
+    .left-section{
+        .left-section *{
+            margin: 0;
+        }
+        h2{
+            font-family: v.$new-york-E-large;
+            font-size: 64px;
+            font-weight: 500;
+            line-height: 76px;
+            width: 802px;
+            height: 228px;
+            span{
+                color: v.$purple;
+            }
+        }
+    }
+    .right-section{
+        font-family: v.$sf-pro;
+        width: 472px;
+        p{
+            line-height: 24px;
+            font-weight: 510px;;
+        }
+        .custom-link{
+            text-decoration: none;
+            display: flex;
+            gap: 11px;
+            align-items: center;
+            color: white;
+            background-color: #6366F1;
+            width: 156px;
+            height: 48px;
+            border-radius: 48px;
+            padding: 12px 20px;
+            p{
+                margin: 0;
+            }
+            img{
+                width: 14px;
+            }
+        }
+    }
+}
+@media(max-width: 576px){
+    .about{
+        padding: 0 !important;
+        flex-direction: column;
+        margin-top: 48px;
+        gap: 32px;
+        .left-section{
+            width: 100%;
+            height: auto;
+            h2{
+                font-size: 1.8rem;
+                width: 100%;
+                line-height: 2rem;
+                height: auto;
+            }
+        }
+        .right-section{
+            width: 100%;
+            p{
+                font-size: 0.9rem;
+                line-height: 24px;
+                font-weight: 500;
+            }
+            a{
+                margin-top: 24px;
+            }
+        }
+    }
+}

@@ -1,0 +1,111 @@
+@use '../../../variables' as v;
+
+.activities{
+    margin-top: 32px;
+    border-radius: 16px;
+    font-family: v.$sf-pro;
+    .activities-header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 20px;
+        border-bottom: 1px solid #DFE1E6;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        background-color: #EEEFF2;
+        .activities-header-text{
+            display: flex;
+            gap: 8px;
+            p{
+                margin: 0;
+                color: #666D80;
+                font-weight: 510;
+            }
+        }
+        .activities-header-button{
+            img{
+                cursor: pointer;
+            }
+        }
+    }
+
+    .recent-activities{
+        .recent-activities-item{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #DFE1E6;
+            padding: 12px;
+            padding-left: 16px;
+            height: 64px;
+            .item-text, .item-timer{
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                p{
+                    margin: 0;
+                    color: #0D0D12;
+                    font-size: 0.875rem;
+                    font-weight: 500;
+                }
+                span{
+                    color: #666D80;
+                    margin: 0;
+                    font-size: 0.875rem;
+                    font-weight: 500;
+                    margin-left: -6px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 576px){
+    .activities{
+        .activities-header{
+            .activities-header-text{
+                p{
+                    font-size: 0.875rem;
+                }
+                .recent-img{
+                    width: 18px ;
+                }
+            }
+            .activities-header-button{
+                .refresh-img{
+                    width: 24px;
+                }
+            }
+        }
+        .recent-activities{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            .recent-activities-item{
+                padding-left: 12px;
+                gap: 10px;
+                .item-timer{
+                    gap: 12px;
+                    img{
+                        width: 16px;
+                    }
+                    span{
+                        font-size: 0.75rem;
+                        white-space: nowrap;
+                    }
+                }
+                .item-text{
+                    gap: 6px;
+                    img{
+                        width: 24px;
+                    }
+                    p{
+                        font-size: 0.75rem;
+                        font-weight: 500;
+                    }
+                }
+                
+            }
+        }
+    }
+}

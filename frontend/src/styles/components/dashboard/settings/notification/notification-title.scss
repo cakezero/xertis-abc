@@ -1,0 +1,69 @@
+@use '../../../../variables' as v;
+h1,h3{
+    margin: 0;
+}
+.notification-title{
+    width: 73.7%;
+    font-family: v.$sf-pro;
+    padding-bottom: 48px;
+    border-bottom: 1px solid #EAECF0;
+    .notification-header{
+        display: flex;
+        flex-direction: column;
+        gap: 64px;
+        h1{
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #101828;
+            margin-bottom: 4px;
+            white-space: nowrap;
+        }
+        p{
+            margin: 0;
+            color: #666D80;
+            font-size: 0.875rem;
+        }
+
+        .general-notification{
+            display: flex;
+            align-items: start;
+            gap: 72px;
+            .general-notification-working{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                .general-notification-working-title{
+                    width: 60%;
+                    h3{
+                        font-size: 1rem;
+                        font-weight: 600;
+                    }
+                }
+                .form-switch{
+                    .switch{
+                        height: 1.5rem !important;
+                        width: 3rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 576px){
+    .notification-title{
+        width: 100%;
+        padding-bottom: 24px;
+        .notification-header{
+            gap: 24px;
+            .header-details{
+                padding-bottom: 24px;
+                border-bottom: 1px solid #DFE1E6;
+            }
+            .general-notification{
+                flex-direction: column;
+                gap: 16px !important;
+            }
+        }
+    }
+}

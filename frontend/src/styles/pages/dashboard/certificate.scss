@@ -1,0 +1,129 @@
+@use '../../variables' as v;
+.certificate{
+    margin-left: 18%;
+    padding: 0px 32px;
+    padding-bottom: 2%;
+}
+.certificate-body{
+    .certificate-title{
+        .certificate-title-link{
+            width: 239px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            button{
+                width: 183px;
+                height: 48px;
+                background-color: v.$purple;
+                color: white;
+                display: flex;
+                gap: 8px;
+                align-items: center;
+                border: none;
+                padding: 12px 20px;
+                border-radius: 48px;
+            }
+        }
+    }
+    .certificate-main-content{
+        width: 50%;
+        margin: 0 auto;
+        margin-top: 41px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        .certificate-main-content-header{
+            width: 504px;
+            .certificate-main-content-title{
+                text-align: center;
+                h1{
+                    font-family: v.$new-york-large;
+                    font-size: 2rem;
+                    font-weight: 500;
+                }
+                p{
+                    margin: 0;
+                    font-family: v.$sf-pro;
+                }
+            }
+        }
+        .certificate-main-content-steps{
+            width: 100%;
+            align-self: start;
+            display: flex;
+            margin-top: 32px;
+            align-items: center;
+            justify-content: space-between;
+            .steps-indicator {
+                display: flex;
+                gap: 10px;
+                border-radius: 8px;
+                margin-bottom: 20px;
+              
+                .steps {
+                    padding: 6px 16px;
+                    border-radius: 24px;
+                    background-color: #EEF2FF;
+                    font-size: 0.875rem;
+                    color: v.$purple;
+                    display: flex;
+                    gap: 8px;
+                    align-items: center;
+                    cursor: pointer;
+                    transition: all 0.3s ease-in-out;
+                    &.completed {
+                        background-color: v.$purple; // Green for completed steps
+                        color: white;
+                        img{
+                            filter: brightness(0) saturate(100%) invert(95%) sepia(98%) saturate(0%) hue-rotate(356deg) brightness(106%) contrast(102%);
+                        }
+                      }
+                }
+            }
+              
+        }
+    }
+}
+@media (max-width: 576px){
+    .certificate{
+        margin: 0;
+        padding: 0px 16px;
+        padding-bottom: 20px;
+        .certificate-title{
+            border: none;
+            margin: 0;
+            .certificate-title-link{
+                justify-content: end;
+            }
+        }
+        .certificate-main-content{
+            margin-top: 41px;
+            width: 100%;
+            gap: 30px;
+            .certificate-main-content-header{
+                width: 100%;
+                .certificate-main-content-title{
+                    h1{
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+            .certificate-main-content-steps{
+                width: 100%;
+                .steps-indicator{
+                    width: 100%;
+                    justify-content: space-between;
+                    .steps{
+                        font-size: 0.625rem;
+                        width: fit-content;
+                        padding: 5px 8px;
+                        img{
+                            width: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

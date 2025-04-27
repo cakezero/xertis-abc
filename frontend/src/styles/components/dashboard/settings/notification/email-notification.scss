@@ -1,0 +1,70 @@
+@use '../../../../variables' as v;
+
+.email-notification{
+    width: 73.7%;
+    font-family: v.$sf-pro;
+    margin-top: 48px;
+    .email-notification-header{
+        display: flex;
+        align-items: start;
+        gap: 72px;
+        h1{
+            font-size: 1.125rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .permission{
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            .permission-item{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                .permission-item-title{
+                    width: 60%;
+                    h3{
+                        font-size: 1rem;
+                        font-weight: 600;
+                    }
+                    p{
+                        font-size: 0.875rem;
+                        color: #666D80;
+                        margin: 0
+                    }
+                }
+                .form-switch{
+                    .switch{
+                        height: 1.5rem !important;
+                        width: 3rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 576px){
+    .email-notification{
+        width: 100%;
+        margin-top: 24px;
+        .email-notification-header{
+            flex-direction: column;
+            gap: 16px;
+            .permission{
+                width: 100%;
+                .permission-item{
+                    .permission-item-title{
+                        h3{
+                            font-size: 0.875rem;
+                            line-height: 23px;
+                        }
+                        p{
+                            font-size: 0.75rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
