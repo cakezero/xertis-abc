@@ -25,7 +25,7 @@ export type Options = {
 export interface emailUser {
   username: string;
   email: string;
-  certUrl?: string;
+  certId?: string;
   minter?: string;
   minted?: number;
   certificateName?: string;

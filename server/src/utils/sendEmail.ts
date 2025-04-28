@@ -76,7 +76,7 @@ export const sendMintEmail = async (user: emailUser, subject: string) => {
           minted: user.minted,
           certName: user.certificateName,
           mintPrice: user.mintPrice,
-          mintUrl: user.certUrl,
+          mintId: user.certId,
           totalAmount: user.totalAmount
         },
       } as MailOptions);
@@ -110,7 +110,7 @@ export const sendCreateCertificateEmail = async (user: emailUser, subject: strin
         subject: subject,
         context: {
           username: user.username,
-          mintUrl: user.certUrl,
+          mintId: user.certId,
           mintPrice: user.mintPrice,
           ETHEquivalent: user.ETHEquivalent,
           txUrl
@@ -124,7 +124,7 @@ export const sendCreateCertificateEmail = async (user: emailUser, subject: strin
       subject: subject,
       context: {
         username: user.username,
-        mintUrl: user.certUrl,
+        mintId: user.certId,
         txUrl
       }
     } as MailOptions)
