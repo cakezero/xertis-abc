@@ -1,9 +1,9 @@
-import '../../styles/pages/Landing_Page/footer.scss';
-import xertisLogo from '../../assets/Landing_Page/footer/xertis-logo.svg';
-import facebook from '../../assets/Landing_Page/footer/facebook.svg';
-import instagram from '../../assets/Landing_Page/footer/instagram.svg';
-import linkedin from '../../assets/Landing_Page/footer/linkedin.svg';
-import twitter from '../../assets/Landing_Page/footer/twitter.svg';
+import '../../styles/pages/landing-page/footer.scss';
+import xertisLogo from '../../assets/landing-page/footer/xertis-logo.svg';
+import facebook from '../../assets/landing-page/footer/facebook.svg';
+import instagram from '../../assets/landing-page/footer/instagram.svg';
+import linkedin from '../../assets/landing-page/footer/linkedin.svg';
+import twitter from '../../assets/landing-page/footer/twitter.svg';
 function Footer(){
     return(
         <footer>

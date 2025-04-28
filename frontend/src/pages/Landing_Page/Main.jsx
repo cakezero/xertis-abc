@@ -1,15 +1,15 @@
-import About from "../../components/Landing_page/About";
+import About from "../../components/landing-page/About";
 import { Link } from "react-router-dom";
-import HowItWorks from "../../components/Landing_page/HowItWorks";
-import Footer from "../../components/Landing_page/Footer";
-import '../../styles/pages/Landing_Page/main.scss';
-import manTurnLeft from '../../assets/Landing_Page/services-image/man turning left.jpeg';
-import rightArrow from '../../assets/Landing_Page/services-image/right-long-arrow.svg';
+import HowItWorks from "../../components/landing-page/HowItWorks";
+import Footer from "../../components/landing-page/Footer";
+import '../../styles/pages/landing-page/main.scss';
+import manTurnLeft from '../../assets/landing-page/services-image/man turning left.jpeg';
+import rightArrow from '../../assets/landing-page/services-image/right-long-arrow.svg';
 import rightSmallArrow from '../../assets/right-arrow.svg';
-import cube from '../../assets/Landing_Page/services-image/cube.svg';
-import easyUse from '../../assets/Landing_Page/services-image/easy-to-use.svg';
-import customizable from '../../assets/Landing_Page/services-image/customize.svg';
-import instantVerification from '../../assets/Landing_Page/services-image/shield-check.svg';
+import cube from '../../assets/landing-page/services-image/cube.svg';
+import easyUse from '../../assets/landing-page/services-image/easy-to-use.svg';
+import customizable from '../../assets/landing-page/services-image/customize.svg';
+import instantVerification from '../../assets/landing-page/services-image/shield-check.svg';
 function Main(){
     return (
         <div className="main">

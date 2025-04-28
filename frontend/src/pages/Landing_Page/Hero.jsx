@@ -1,4 +1,4 @@
-import '../../styles/pages/Landing_Page/hero.scss'
+import '../../styles/pages/landing-page/hero.scss'
 import { Link } from "react-router-dom";
 import xertisLogo from '../../assets/xertis logo.svg';
 import rightArrow from '../../assets/right-arrow.svg';

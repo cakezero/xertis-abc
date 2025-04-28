@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import rightArrow from '../../assets/right-arrow.svg';
-import '../../styles/pages/Landing_Page/about.scss';
+import '../../styles/pages/landing-page/about.scss';
 function About(){
     return (
         <div className="about container-fluid px-3">

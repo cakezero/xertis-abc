@@ -1,6 +1,6 @@
 import '../styles/login.scss'
 import xertisLogo from '../assets/xertis-logo-colored.svg';
-import AuthForm from '../components/Landing_page/AuthForm';
+import AuthForm from '../components/landing-page/AuthForm';
 import statsDashboard from '../assets/signin-login/stats-dashboard.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";

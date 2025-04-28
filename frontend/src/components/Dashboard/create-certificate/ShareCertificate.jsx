@@ -1,4 +1,4 @@
-import '../../../styles/pages/Landing_Page/share-certificate.scss';
+import '../../../styles/pages/landing-page/share-certificate.scss';
 import copyIcon from '../../../assets/dashboard/create-certificate/steps/generate-url/copy-icon.svg';
 import toast from "react-hot-toast";
 import { useUser } from "../../../provider/useUser";
