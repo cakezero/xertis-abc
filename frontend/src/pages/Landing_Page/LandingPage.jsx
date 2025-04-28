@@ -1,5 +1,5 @@
-import Hero from "../components/landing-page/Hero.jsx";
-import Main from "../components/landing-page/Main.jsx";
+import Hero from "./Hero.jsx";
+import Main from "./Main.jsx";
 function LandingPage(){
     return(
         <div>

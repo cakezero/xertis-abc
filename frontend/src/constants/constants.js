@@ -1,5 +1,5 @@
 export const API = "https://xertis.onrender.com";
-export const CLIENT = "";
+export const CLIENT = "https://xertis-abc.vercel.app";
 
 export const symbols = {
   "award": "AWARD",

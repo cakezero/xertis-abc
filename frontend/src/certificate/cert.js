@@ -89,7 +89,7 @@ export const createCertificate = async (email, name, symbol, price) => {
   }
 }
 
-export const mintCertificate = async (contract, name, certificateName, description, type, price, certUrl, email) => {
+export const mintCertificate = async (contract, name, certificateName, description, type, price, certId, email) => {
   
   try {
     const signer = await getSigner();
@@ -107,7 +107,7 @@ export const mintCertificate = async (contract, name, certificateName, descripti
       await axios.post(`${API}/creator/minted`, {
         email,
         name,
-        certUrl
+        certId
       });
       return minted.hash;
     }
@@ -121,7 +121,7 @@ export const mintCertificate = async (contract, name, certificateName, descripti
     await axios.post(`${API}/creator/minted`, {
       email,
       name,
-      certUrl
+      certId
     });
 
     return priceMinted.hash;

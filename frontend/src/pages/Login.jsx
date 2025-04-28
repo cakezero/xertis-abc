@@ -1,19 +1,19 @@
 import '../styles/login.scss'
 import xertisLogo from '../assets/xertis-logo-colored.svg';
-import AuthForm from '../components/landing-page/AuthForm';
+import AuthForm from '../components/Landing_page/AuthForm';
 import statsDashboard from '../assets/signin-login/stats-dashboard.svg';
 import { Link, useNavigate } from 'react-router-dom';
-// import axios from "axios";
-// import { API } from "../constants/constants"
+import axios from "axios";
+import { API } from "../constants/constants"
 import toast from "react-hot-toast"
-// import { useUser } from '../provider/useUser';
+import { useUser } from '../provider/useUser';
 import { useState } from "react";
 
 function Login() {
     const [submit, setSubmit] = useState(false);
 
     const navigate = useNavigate();
-    // const { setGlobalUser } = useUser();
+    const { setGlobalUser } = useUser();
     const handleSubmit = async (formData) => {
         try {
             setSubmit(true);
@@ -22,13 +22,13 @@ function Login() {
             const response = await axios.post(`${API}/creator/login`, { email: formData.email, password: formData.password });
             console.log({ response: response.data });
 
-            setGlobalUser(response.data.userInfo);
+            localStorage.setItem("user", JSON.stringify(response.data.userInfo));
             setSubmit(false);
             navigate("/xertis/dashboard/overview");
             toast.success("Logged In successfully");
         } catch (error) {
             console.error(error);
-            toast.error("Error signing in");
+            toast.error(error.response.data.error);
             setSubmit(false);
         }
     }
