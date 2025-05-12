@@ -1,4 +1,4 @@
-import '../../../styles/pages/landing-page/share-certificate.scss';
+import '../../../styles/pages/Landing_Page/share-certificate.scss';
 import copyIcon from '../../../assets/dashboard/create-certificate/steps/generate-url/copy-icon.svg';
 import toast from "react-hot-toast";
 import { useUser } from "../../../provider/useUser";
@@ -16,11 +16,13 @@ function copyDivText() {
     });
   }
 
+  
 document.addEventListener("click", (event) => {
     if (event.target.classList.contains("clear-button")) {
         event.target.previousElementSibling.value = ""; // Clear the input
     }
 });
+
 
 //This block of code is a function that deletes or removes the text in the label element;
 document.querySelectorAll('.input-certificate').forEach(container => {

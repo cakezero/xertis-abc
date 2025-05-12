@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import LandingPage from './pages/landing-page/LandingPage.jsx';
+import LandingPage from './pages/Landing_Page/LandingPage.jsx';
 import SignUp from './pages/SignUp.jsx';
 import Login from './pages/Login.jsx';
 import Overview from './pages/Dashboard/Overview.jsx';
@@ -8,10 +8,12 @@ import History from './pages/Dashboard/History.jsx';
 import ManageCertificate from './pages/Dashboard/ManageCertificate.jsx';
 import Settings from './pages/Dashboard/Settings.jsx';
 import Mint from '../src/pages/Mint.jsx';
+import { UserProvider } from './provider/UserProvider.jsx';
 import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
+    <UserProvider>
       <Router>
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -27,6 +29,7 @@ function App() {
         </Routes>
         <Toaster />
       </Router>
+    </UserProvider>
   );
 }
 

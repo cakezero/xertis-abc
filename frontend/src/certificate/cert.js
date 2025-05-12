@@ -58,7 +58,9 @@ export const createCertificate = async (email, name, symbol, price) => {
     let tx;
     let certificateAddress;
 
+
     if (!wallet) {
+      console.log("Creating new wallet");
       const wallet = await createWallet();
       const certificateFactory = new ethers.ContractFactory(certAbi, certBytecode, signer);
 
@@ -101,9 +103,9 @@ export const mintCertificate = async (contract, name, certificateName, descripti
 
     if (price === 0) {
       const minted = await certificateContract.NoPriceMint(metadataURI, { gasLimit: 10000000 });
-  
+
       await minted.wait();
-  
+
       await axios.post(`${API}/creator/minted`, {
         email,
         name,

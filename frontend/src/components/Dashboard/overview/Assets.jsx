@@ -7,20 +7,19 @@ import upArrow from '../../../assets/dashboard/overview/assets/green-up-arrow.sv
 import { useEffect, useState } from 'react';
 import axios from "axios";
 import { API } from '../../../constants/constants';
-import { useUser } from '../../../provider/useUser';
+// import { useUser } from '../../../provider/useUser';
 
 function Assets() {
     const [balance, setBalance] = useState(0);
     const [minters, setMinters] = useState(0);
     const [certificates, setCertificates] = useState(0);
 
-    const { globalUser } = useUser();
-    const { email } = globalUser;
-
     useEffect(() => {
         (async () => {
-            try { 
-                const response = await axios.get(`${API}/creator/get-assets?email=${email}`);
+            const user = localStorage.getItem("user");
+            const parsedObj = JSON.parse(user);
+            try {
+                const response = await axios.get(`${API}/creator/get-assets?email=${parsedObj.email}`);
                 setBalance(response.data.responseProp.walletBalance);
                 setMinters(response.data.responseProp.totalMinters);
                 setCertificates(response.data.responseProp.certificates);
@@ -28,7 +27,7 @@ function Assets() {
                 console.error(error.message);
             }
         })()
-    })
+    }, []);
     return(
         <section className='assets'>
             <div className='assets-wallet'>

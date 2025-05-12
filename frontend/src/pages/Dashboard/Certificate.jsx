@@ -39,16 +39,16 @@ function Certificate() {
         const user = localStorage.getItem("user");
 
         if (!user) {
-            navigate("/xertis/login");
-            toast.error("You need to be logged in to access this route")
-            return;
+          navigate("/xertis/login");
+          toast.error("You need to be logged in to access this route")
+          return;
         }
 
         const userObject = JSON.parse(user);
-
+     
         setGlobalUser(userObject);
         })();
-    });
+    }, [navigate]);
 
     // Function to navigate to the next step
     const nextStep = () => setStep(step + 1);

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import '../../styles/components/authform.scss';
 import googleIcon from '../../assets/signin-login/google icon.svg';
 import toast from "react-hot-toast";
-// import { Spinner } from "../Dashboard/create-certificate/Spinner";
+import { Spinner } from "../Dashboard/create-certificate/Spinner";
 
 const AuthForm = ({ isSignup, onSubmit, submit }) => {
   const navigate = useNavigate();

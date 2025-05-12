@@ -38,7 +38,7 @@ export const connectMetaMask = async () => {
                 symbol: 'AVAX',
                 decimals: 18,
               },
-              rpcUrls: ['https://api.avax-test.network'],
+              rpcUrls: ['https://api.avax-test.network/ext/bc/c/rpc'],
               blockExplorerUrls: ['https://testnet.snowtrace.io'],
             },
           ],

@@ -21,7 +21,7 @@ function Overview(){
             navigate("/xertis/login");
             toast.error("Login to continue");
         }
-    })
+    }, [navigate]);
     return(
         <div className='overview'>
             <Sidebar />

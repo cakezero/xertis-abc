@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import '../styles/signup-login.scss'
 import xertisLogo from '../assets/xertis-logo-colored.svg';
 import phoneImg from '../assets/signin-login/phone.svg';
-import AuthForm from '../components/landing-page/AuthForm.jsx';
+import AuthForm from '../components/Landing_page/AuthForm.jsx';
 import { useUser } from '../provider/useUser';
 import axios from "axios";
 import toast from "react-hot-toast"
@@ -17,12 +17,11 @@ function SignUp() {
     const handleSubmit = async (formData) => {
        try {
             setSubmit(true);
-            console.log("Register Data:", formData);
            
             const response = await axios.post(`${API}/creator/register`, { name: formData.name, email: formData.email, password: formData.password });
             console.log({ response: response.data });
            
-            localStorage.setItem("user", response.data.userInfo);
+            localStorage.setItem("user", JSON.stringify(response.data.userInfo));
             setSubmit(false);
             
             navigate("/xertis/dashboard/overview");

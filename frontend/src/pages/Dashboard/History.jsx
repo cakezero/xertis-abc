@@ -35,24 +35,24 @@ let historyItem = [];
 //     const randomHistoryItem = historyActivity[randomHistory];
 //     historyItem.push(randomHistoryItem);
 // }
-console.log(historyItem)
 function History() {
-  const { globalUser } = useUser();
-  const { email } = globalUser;
+
   const [item, setItem] = useState(false)
   useEffect(() => {
     (async () => {
-      const response = await axios.get(`${API}/creator/history?email=${email}`);
+      const user = localStorage.getItem("user");
+      const parsedObj = JSON.parse(user);
+      const response = await axios.get(`${API}/creator/history?email=${parsedObj.email}`);
       const info = response.data.historyInfo;
-      console.log({ historyResponse: info });
-      if (info === ""){
-          setItem(false)
+     
+      if (info === "") {
+        setItem(false)
       } else {
         historyItem.push(...info);
         setItem(true)
       }
     })()
-  })
+  }, []);
     return (
       <section className="history">
         <Sidebar />

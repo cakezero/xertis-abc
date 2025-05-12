@@ -1,6 +1,6 @@
-import '../../styles/pages/landing-page/how-it-works.scss'
+import '../../styles/pages/Landing_Page/how-it-works.scss'
 import { Link } from "react-router-dom";
-import sketchDrawing from '../../assets/landing-page/how-it-works/man-with-drawing.svg';
+import sketchDrawing from '../../assets/Landing_Page/how-it-works/man-with-drawing.svg';
 function HowItWorks(){
     return(
         <div className="how-it-works">

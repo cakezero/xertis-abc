@@ -9,7 +9,7 @@ import descriptionImg from '../../../assets/dashboard/create-certificate/steps/f
 
 import dateImg from '../../../assets/dashboard/create-certificate/steps/form-date-placeholder.svg';
 
-import mintImg from '../../../assets/dashboard/create-certificate/steps/form-mint-placeholder.svg';
+import mintImg from '../../../assets/dashboard/create-certificate/steps/new.png';
 
 import numImg from '../../../assets/dashboard/create-certificate/steps/form-num-placeholder.svg';
 

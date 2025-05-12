@@ -16,7 +16,7 @@ import descriptionImg from "../../../assets/dashboard/create-certificate/steps/f
 
 import dateImg from "../../../assets/dashboard/create-certificate/steps/form-date-placeholder.svg";
 
-import mintImg from "../../../assets/dashboard/create-certificate/steps/form-mint-placeholder.svg";
+import mintImg from "../../../assets/dashboard/create-certificate/steps/new.png";
 
 import numImg from "../../../assets/dashboard/create-certificate/steps/form-num-placeholder.svg";
 
@@ -78,7 +78,6 @@ const ReviewSubmit = ({
   const [submit, setSubmit] = useState(false);
   // const { globalUser, setLink } = useUser();
   const { email } = globalUser;
-
   // // State to track whether the user has connected a wallet and its set to true for now
   // const [walletConnected, setWalletConnected] = useState(false);
 
@@ -129,7 +128,7 @@ const ReviewSubmit = ({
           certificateType: formData.certificateType,
         }
       );
-      await axios.post(`${API}/creator/create-email`, { email, tx });
+      // await axios.post(`${API}/creator/create-email`, { email, tx });
       localStorage.setItem("mintId", createdResponse.data.certId);
 
       setSubmit(false);
@@ -150,7 +149,6 @@ const ReviewSubmit = ({
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  console.log(formData);
   return (
     <div className="certificate-form">
       {/* Header Section */}

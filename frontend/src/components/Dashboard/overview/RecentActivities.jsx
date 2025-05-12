@@ -11,13 +11,13 @@ import axios from "axios";
 const mintedCertificates = [];
 
 function RecentActivites() {
-    const { globalUser } = useUser();
-    const { email } = globalUser;
 
     const [item, setItem] = useState(false);
     useEffect(() => {
         (async () => {
-            const response = await axios.get(`${API}/certificate/history?email=${email}`);
+            const user = localStorage.getItem("user");
+            const parsedObj = JSON.parse(user);
+            const response = await axios.get(`${API}/creator/history?email=${parsedObj.email}`);
             const info = response.data.historyInfo;
             if (info === "") {
                 setItem(false);
@@ -28,7 +28,7 @@ function RecentActivites() {
                 setItem(true);
             }
         })();
-    })
+    }, []);
     return(
         <section className="activities">
             <div className='activities-header'>

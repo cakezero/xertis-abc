@@ -15,8 +15,7 @@ import { withdrawProfits } from "../../../certificate/cert"
 import OverviewModal from './OverviewModal';
 
 function Revenue() {
-    const { globalUser } = useUser();
-    const { email } = globalUser;
+
     const [revenue, setRevenue] = useState([{
         Minters: 0,
         amount: 0,
@@ -26,9 +25,11 @@ function Revenue() {
 
     useEffect(() => {
         (async () => {
+            const user = localStorage.getItem("user");
+            const parsedObj = JSON.parse(user);
             try {
-                const response = await axios.get(`${API}/certificate/get-revenue?email=${email}`)
-                const creatorResponse = await axios.get(`${API}/creator/get-revenue?email=${email}`)
+                const response = await axios.get(`${API}/certificate/get-revenue?email=${parsedObj.email}`)
+                const creatorResponse = await axios.get(`${API}/creator/get-revenue?email=${parsedObj.email}`)
                 console.log({ response: response.data.revenueInfo, creatorResponse: creatorResponse.data.revenue })
                 setRevenue(response.data.revenueInfo)
                 setTotalRevenue(creatorResponse.data.revenue)
@@ -36,7 +37,7 @@ function Revenue() {
                 console.error(error)
             }
         })()
-    })
+    }, []);
 
     // State to manage the modal visibility
     const [isModalOpen, setIsModalOpen] = useState(false);
