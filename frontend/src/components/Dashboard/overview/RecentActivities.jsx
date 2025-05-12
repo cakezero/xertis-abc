@@ -13,13 +13,13 @@ const mintedCertificates = [];
 function RecentActivites() {
 
     const [item, setItem] = useState(false);
+    const user = localStorage.getItem("user");
     useEffect(() => {
         (async () => {
-            const user = localStorage.getItem("user");
             const parsedObj = JSON.parse(user);
             const response = await axios.get(`${API}/creator/history?email=${parsedObj.email}`);
             const info = response.data.historyInfo;
-            if (info === "") {
+            if (info === "" | info.length === 0) {
                 setItem(false);
             } else {
                 for (let i = 0; i < 3; i++) {
@@ -28,7 +28,7 @@ function RecentActivites() {
                 setItem(true);
             }
         })();
-    }, []);
+    }, [user]);
     return(
         <section className="activities">
             <div className='activities-header'>
@@ -58,4 +58,4 @@ function RecentActivites() {
         </section>
     )
 }
-export default RecentActivites
+export default RecentActivites;
