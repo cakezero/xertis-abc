@@ -14,19 +14,6 @@
             padding-bottom: 0;
         }
 
-        button {
-            width: 290px;
-            height: 48px;
-            padding: 12px 32px;
-            border: none;
-            color: white;
-            background-color: #6366F1;
-            border-radius: 3px;
-            cursor: pointer;
-            font-weight: 700;
-            font-family: 'SF Pro', sans-serif;
-        }
-
         span {
             color: #6366F1;
         }
@@ -106,13 +93,6 @@
             text-align: center;
         }
 
-        small {
-            font-size: 0.75rem;
-            margin-top: 12px;
-            display: block;
-            color: #46586B;
-        }
-
         @media (max-width: 576px) {
             body {
                 padding: 16px;
@@ -143,24 +123,24 @@
             </a>
         </div>
         <div>
-            <h1 class="m-0">Congratulations! Your Certificate Has Been Minted</h1>
+            <h1>Your Certificate Has Been Created Successfully!</h1>
         </div>
         <div class="xertis-email-content">
             <p class="m-0">Hi {{username}},</p>
             <div>
                 <p>
-                    Congratulations! Your blockchain-powered certificate has been successfully minted on Xertis.
+                    Your blockchain-powered certificate has been successfully created on Xertis!
                 </p>
-                <p>You can now view, share, or download your certificate anytime.</p>
+                <h3>Here's your minting link to share with recipients: <a
+                        href="https://xertis.vercel.app/claim/{{mintUrl}}" target="_blank"
+                        rel="noopener noreferrer">https://xertis.vercel.app/claim/{{mintUrl}}</a></h3>
             </div>
-            <div>
-                <button><a href={{txUrl}} target="_blank" rel="noopener noreferrer">View Certificate</a></button>
-                <small>
-                    Or copy and paste the following URL into your browser
-                    <br>
-                    <a href={{txUrl}} target="_blank" class="link">{{txUrl}}</a>
-                </small>
-            </div>
+            <h3>What's next?</h3>
+            <ul>
+                <li>Share the minting link with your recipients</li>
+                <li>Recipients can log in, fill their details, and mint their certificates.</li>
+            </ul>
+
             <div>
                 <p class="m-0">
                     This certificate is secured on the blockchain, ensuring it’s tamper-proof and verifiable anytime,
@@ -175,7 +155,7 @@
             <br>
             Never miss a beat! Follow us on <span>Twitter</span> , <span>Facebook</span> and <span>Instagram.</span>
         </p>
-        <p>Don’t want any more emails from xertis? <a href="https://xertis.vercel.app" class="link"
+        <p>Don’t want any more emails from Xertis? <a href="https://xertis.vercel.app" class="link"
                 target="_blank">Unsubscribe. </a>
     </footer>
 </body>

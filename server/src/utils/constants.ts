@@ -1,6 +1,6 @@
-export const BLOCK_EXPLORER = "https://testnet.snowtrace.io";
+export const BLOCK_EXPLORER = "https://testnet.snowscan.xyz";
 
-export const ETHPrice = 1; // todo: get avax price thorugh api fetch
+export const ETHPrice = 1
 
 export const images = {
   award: "ipfs://bafkreicfy3rz5yo7qqcsmsosj2i3amfvrbts62q4gtl4dwk5722d4jmkni",

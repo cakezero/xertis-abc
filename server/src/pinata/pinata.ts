@@ -6,7 +6,7 @@ export default async function createMetadataURI(certName: string, name: string, 
   try {
     const pinata = new pinataSDK(PINATA_API_KEY, PINATA_SECRET);
     const image = images[type as keyof typeof images];
-
+    
     const metadata = {
       name: certName,
       description,

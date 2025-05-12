@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import httpStatus from 'http-status';
+import httpStatus from "http-status";
 import logger from "../configs/logger";
 import certificateModel from "../models/certificateSchema";
 import certOwner from "../models/certOwner";
@@ -11,200 +11,231 @@ import { BLOCK_EXPLORER } from "../utils/constants";
 import createMetadataURI from "../pinata/pinata";
 
 type revenueType = {
-  amount: number,
-  Minters: number,
-  Month: string,
-  email: string
-}
+	amount: number;
+	Minters: number;
+	Month: string;
+	email: string;
+};
 
 const createCert = async (req: Request, res: Response) => {
-  try {
-    const certId = cryptoRandomString({ length: 8, type: "alphanumeric" });
-    req.body.certId = certId;
+	try {
+		const certId = cryptoRandomString({ length: 8, type: "alphanumeric" });
+		req.body.certId = certId;
 
-    const { owner } = req.body;
-    const updateCreator = await certOwner.findOne({ email: owner });
-    
-    if (!updateCreator) {
-      res.status(httpStatus.BAD_REQUEST).json({ message: "Invalid certificate owner" });
-      return;
-    }
+		const { owner } = req.body;
+		const updateCreator = await certOwner.findOne({ email: owner });
 
-    const createdCertificate = new certificateModel(req.body);
-    createdCertificate.save();
+		if (!updateCreator) {
+			res
+				.status(httpStatus.BAD_REQUEST)
+				.json({ message: "Invalid certificate owner" });
+			return;
+		}
 
-    updateCreator.certificates.push(createdCertificate._id);
-    updateCreator.save();
+		const createdCertificate = new certificateModel(req.body);
+		await createdCertificate.save();
 
-    res.status(httpStatus.CREATED).json({ message: "Certificate created", certId });
-  } catch (error: any) {
-    logger.error(`Error saving certificate: ${error.messag}`);
-    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ message: "Internal server error" });
-  }
-}
+		updateCreator.certificates.push(createdCertificate._id);
+		await updateCreator.save();
 
-const certificateInfo = async (req: Request, res: Response) => { 
-  try {
-    const { certId } = req.params;
-    const certificateInfo = await certificateModel.findOne({ certId });
+		res
+			.status(httpStatus.CREATED)
+			.json({ message: "Certificate created", certId: createdCertificate.certId });
+	} catch (error) {
+		console.error(error);
+		res
+			.status(httpStatus.INTERNAL_SERVER_ERROR)
+			.json({ message: "Internal server error" });
+	}
+};
 
-    if (!certificateInfo) {
-      res.status(httpStatus.BAD_REQUEST).json({ error: "Invalid certificate id" })
-      return;
-    }
+const certificateInfo = async (req: Request, res: Response) => {
+	try {
+		const { certId } = req.params;
+		console.log({ certId })
+		const certificateInfo = await certificateModel.findOne({ certId });
 
-    res.status(httpStatus.OK).json({ message: "Certificate details found", certificateInfo })
-  } catch (error: any) {
-    logger.error(`Error fetching certificate information: ${error.message}`);
-    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ error: "Internal server error" })
-  }
-}
+		if (!certificateInfo) {
+			res
+				.status(httpStatus.BAD_REQUEST)
+				.json({ error: "Invalid certificate id" });
+			return;
+		}
+
+		res
+			.status(httpStatus.OK)
+			.json({ message: "Certificate details found", certificateInfo });
+	} catch (error: any) {
+		logger.error(`Error fetching certificate information: ${error.message}`);
+		res
+			.status(httpStatus.INTERNAL_SERVER_ERROR)
+			.json({ error: "Internal server error" });
+	}
+};
 
 const mintedCert = async (req: Request, res: Response) => {
-  try {
-    const { certId, name, amount, email, hash } = req.body;
+	try {
+		const { certId, name, amount, email, hash } = req.body;
 
-    const checkMinter = name as string;
-    const Amount = amount! as unknown as number;
+		const checkMinter = name as string;
+		const amm = amount! as unknown as number;
 
-    const date = new Date();
-    const Month = format(date, "MMM");
+		const date = new Date();
+		const Month = format(date, "MMM");
 
-    const certCheck = await certificateModel.findOne({ certId });
-    if (!certCheck) {
-      res
-        .status(httpStatus.BAD_REQUEST)
-        .json({ error: "Invalid certificate id" });
-      return;
-    }
+		const certCheck = await certificateModel.findOne({ certId });
+		if (!certCheck) {
+			res
+				.status(httpStatus.BAD_REQUEST)
+				.json({ error: "Invalid certificate Id" });
+			return;
+		}
 
-    const { users } = certCheck;
+		const { users } = certCheck;
 
-    if (users.length > 0) {
-      for (let i = 0; i <= users.length; i++) {
-        const user = users.find((user) => user.name === checkMinter)
-        if (user) {
-          res
-            .status(httpStatus.BAD_REQUEST)
-            .json({ error: "User has already minted" });
-          return;
-        }
-      }
-    }
+		if (users.length > 0) {
+			for (let i = 0; i <= users.length; i++) {
+				const user = users.find((user) => user.name === checkMinter);
+				if (user) {
+					res
+						.status(httpStatus.BAD_REQUEST)
+						.json({ error: "User has already minted" });
+					return;
+				}
+			}
+		}
 
-    const userProp = {
-      name: checkMinter,
-      certName: certCheck.certificateName,
-      date
-    }
+		const userProp = {
+			name: checkMinter,
+			certName: certCheck!.certificateName!,
+			date,
+		};
 
-    certCheck.minted += 1;
-    certCheck.totalAmount += certCheck.mintPrice!;
-    certCheck.users.push(userProp);
-    certCheck.save();
+		certCheck!.minted! += 1;
+		certCheck!.totalAmount += certCheck!.mintPrice!;
+		certCheck!.users.push(userProp);
+		certCheck!.save();
 
-    const { owner } = certCheck;
-    const certCreator = await certOwner.findOne({ email: owner });
-    if (!certCreator) {
-      res
-        .status(httpStatus.BAD_REQUEST)
-        .json({ error: "Invalid certificate owner" });
-      return;
-    }
+		const { owner } = certCheck!;
+		const certCreator = await certOwner.findOne({ email: owner });
+		if (!certCreator) {
+			res
+				.status(httpStatus.BAD_REQUEST)
+				.json({ error: "Invalid certificate owner" });
+			return;
+		}
 
-    certCreator.totalRevenue += certCheck.mintPrice!;
-    certCreator.totalMinters += 1;
-    certCreator.walletBalance += certCheck.mintPrice!;
-    certCreator.save()
+		certCreator.totalRevenue += certCheck!.mintPrice!;
+		certCreator.totalMinters += 1;
+		certCreator.walletBalance += certCheck!.mintPrice!;
+		certCreator.save();
 
-    let revenueProp: revenueType;
+		let revenueProp: revenueType;
 
-    const revenueExists = await revenue.find({ email: certCheck.owner });
-    if (revenueExists.length === 0) {
-      revenueProp = {
-        amount: Amount,
-        Minters: 1,
-        Month,
-        email: certCheck.owner
-      };
+		const revenueExists = await revenue.find({ email: certCheck!.owner });
+		if (revenueExists.length === 0) {
+			revenueProp = {
+				amount: amm,
+				Minters: 1,
+				Month,
+				email: certCheck!.owner,
+			};
 
-      const newRevenue = new revenue(revenueProp);
-      await newRevenue.save();
-    } else {
-      const existingRevenue = revenueExists.find(
-        (revenueRecord) => revenueRecord.Month === Month
-      );
+			const newRevenue = new revenue(revenueProp);
+			await newRevenue.save();
+		} else {
+			const existingRevenue = revenueExists.find(
+				(revenueRecord) => revenueRecord.Month === Month
+			);
 
-      if (!existingRevenue) {
-        revenueProp = {
-          amount: Amount,
-          Minters: 1,
-          Month,
-          email: certCheck.owner,
-        };
+			if (!existingRevenue) {
+				revenueProp = {
+					amount: amm,
+					Minters: 1,
+					Month,
+					email: certCheck!.owner,
+				};
 
-        const newRevenue = new revenue(revenueProp);
-        await newRevenue.save();
-        return;
-      };
+				const newRevenue = new revenue(revenueProp);
+				await newRevenue.save();
+				return;
+			}
 
-      existingRevenue.Minters += 1;
-      existingRevenue.amount += Amount;
-      await existingRevenue.save();
-    };
+			existingRevenue.Minters += 1;
+			existingRevenue.amount += amm;
+			await existingRevenue.save();
+		}
 
-    await minterEmail(email, checkMinter, certCheck.certificateName, hash);
-    res.status(httpStatus.OK).json({ message: "Minted info saved" });
-  } catch (error: any) {
-    logger.error(`Error updating minted certificates: ${error.message}`);
-    console.dir(error)
-    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ error: "Internal server error" })
-  }
-}
+		await minterEmail(email, checkMinter, certCheck!.certificateName!, hash);
+		res.status(httpStatus.OK).json({ message: "Minted info saved" });
+	} catch (error: any) {
+		logger.error(`Error updating minted certificates: ${error.message}`);
+		console.dir(error);
+		res
+			.status(httpStatus.INTERNAL_SERVER_ERROR)
+			.json({ error: "Internal server error" });
+	}
+};
 
 const getRevenue = async (req: Request, res: Response) => {
-  try {
-    const { email } = req.query;
-    const revenueInfo = await revenue.find({ email }).select("-_id -email")
+	try {
+		const { email } = req.query;
+		const revenueInfo = await revenue.find({ email }).select("-_id -email");
 
-    res.status(httpStatus.OK).json({ message: "Revenue fetched", revenueInfo })
-  } catch (error: any) {
-    logger.error(`Error fetching revenue: ${error.message}`)
-    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ error: "Internal Server Error" })
-  }
+		res.status(httpStatus.OK).json({ message: "Revenue fetched", revenueInfo });
+	} catch (error: any) {
+		logger.error(`Error fetching revenue: ${error.message}`);
+		res
+			.status(httpStatus.INTERNAL_SERVER_ERROR)
+			.json({ error: "Internal Server Error" });
+	}
 };
 
 const createMetadata = async (req: Request, res: Response) => {
-  try {
-    const { certificateName, name, type, description } = req.body;
+	try {
+		const { certificateName, name, type, description } = req.body;
 
-    const metadataURI = await createMetadataURI(certificateName, name, type, description);
+		const metadataURI = await createMetadataURI(
+			certificateName,
+			name,
+			type,
+			description
+		);
 
-    res.status(httpStatus.OK).json({ message: "Metadata created and sent", metadataURI })
-  } catch (error: any) {
-    logger.error(`Error creting metadata: ${error.message}`)
-    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ error: "Internal Server Error" })
-  }
-}
+		res
+			.status(httpStatus.OK)
+			.json({ message: "Metadata created and sent", metadataURI });
+	} catch (error: any) {
+		logger.error(`Error creting metadata: ${error.message}`);
+		res
+			.status(httpStatus.INTERNAL_SERVER_ERROR)
+			.json({ error: "Internal Server Error" });
+	}
+};
 
-const minterEmail = async (email: string, name: string, certificateName: string, hash: string) => {
-  try {
-    const emailProp = {
-      username: name,
-      email: email,
-      certificateName: certificateName,
-    };
+const minterEmail = async (
+	email: string,
+	name: string,
+	certificateName: string,
+	hash: string
+) => {
+	try {
+		const emailProp = {
+			username: name,
+			email: email,
+			certificateName: certificateName,
+		};
 
-    const txUrl = `${BLOCK_EXPLORER}/tx/${hash}`;
+		const txUrl = `${BLOCK_EXPLORER}/tx/${hash}`;
 
-    await sendMinterEmail(
-      emailProp,
-      `${certificateName} minted successfully! 🎉`,
-      txUrl
-    );
-  } catch (error: any) {
-    logger.error(`Error sending minter email: ${error.message}`);
-  }
+		await sendMinterEmail(
+			emailProp,
+			`${certificateName} minted successfully! 🎉`,
+			txUrl
+		);
+	} catch (error: any) {
+		logger.error(`Error sending minter email: ${error.message}`);
+	}
 };
 
 export { certificateInfo, createCert, mintedCert, createMetadata, getRevenue };

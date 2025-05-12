@@ -27,6 +27,7 @@
     "mongoose": "^8.9.5",
     "nodemailer": "^6.10.0",
     "nodemailer-express-handlebars": "^7.0.0",
+    "viem": "^2.22.10",
     "winston": "^3.17.0"
   }
 }

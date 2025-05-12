@@ -14,6 +14,15 @@
             padding-bottom: 0;
         }
 
+        span {
+            color: #6366F1;
+        }
+
+        .unsubscribe {
+            color: #6366F1;
+            text-decoration: none;
+        }
+
         button {
             width: 290px;
             height: 48px;
@@ -25,15 +34,6 @@
             cursor: pointer;
             font-weight: 700;
             font-family: 'SF Pro', sans-serif;
-        }
-
-        span {
-            color: #6366F1;
-        }
-
-        .link {
-            color: #6366F1;
-            text-decoration: none;
         }
 
         ul {
@@ -66,7 +66,7 @@
             flex-direction: column;
             padding: 40px;
             gap: 40px;
-            border-radius: 3px
+            border-radius: 3px;
         }
 
         .xertis-link {
@@ -106,13 +106,6 @@
             text-align: center;
         }
 
-        small {
-            font-size: 0.75rem;
-            margin-top: 12px;
-            display: block;
-            color: #46586B;
-        }
-
         @media (max-width: 576px) {
             body {
                 padding: 16px;
@@ -143,39 +136,66 @@
             </a>
         </div>
         <div>
-            <h1 class="m-0">Congratulations! Your Certificate Has Been Minted</h1>
+            <h1>A Certificate Has Been Minted!</h1>
         </div>
         <div class="xertis-email-content">
             <p class="m-0">Hi {{username}},</p>
             <div>
                 <p>
-                    Congratulations! Your blockchain-powered certificate has been successfully minted on Xertis.
+                    Welcome to Xertis! We’re excited to have you join our platform for creating and
+                    issuing blockchain-powered certificates.
                 </p>
-                <p>You can now view, share, or download your certificate anytime.</p>
+                <h3>Here are the details</h3>
             </div>
+
             <div>
-                <button><a href={{txUrl}} target="_blank" rel="noopener noreferrer">View Certificate</a></button>
-                <small>
-                    Or copy and paste the following URL into your browser
+                <ul>
+                    <li>
+                        Certificate Name:
+                        <span>{{certName}}</span>
+                    </li>
+                    <li>
+                        Recipient Name:
+                        <span>{{minter}}</span>
+                    </li>
+                    <li>
+                        Mint URL:
+                        <span>https://xertis.vercel.app/claim/{{mintUrl}}</span>
+                    </li>
+                    <li>
+                        Mint Price:
+                        <span>{{mintPrice}} AVAX</span>
+                    </li>
+                </ul>
+            </div>
+            <p>You can view all minting activity and manage your certificates from your dashboard.</p>
+
+            <div>
+                <h3 class="mb-3">View Certificate Details:</h3>
+                <button><a href="http://xertis.vercel.app/xertis/dashboard" target="_blank" rel="noopener noreferrer">Go
+                        to dashboard</a></button>
+            </div>
+
+            <div>
+                <p>If you have any questions or need assistance, feel free to reach out to our support team at [support
+                    email]</p>
+                <p>Keep up the great work!</p>
+                <p>
+                    Best regards,
                     <br>
-                    <a href={{txUrl}} target="_blank" class="link">{{txUrl}}</a>
-                </small>
-            </div>
-            <div>
-                <p class="m-0">
-                    This certificate is secured on the blockchain, ensuring it’s tamper-proof and verifiable anytime,
-                    anywhere.
+                    The Xertis Team
                 </p>
             </div>
         </div>
     </main>
 
     <footer>
-        <p class="lh-base">Questions or concerns? Get in touch with us at <span>xertis.reply@gmail.com</span>
+        <p class="lh-base">Questions or concerns? Get in touch with us at <span>xxx@email.com</span> or
+            <span>555-555-555.</span>
             <br>
             Never miss a beat! Follow us on <span>Twitter</span> , <span>Facebook</span> and <span>Instagram.</span>
         </p>
-        <p>Don’t want any more emails from xertis? <a href="https://xertis.vercel.app" class="link"
+        <p>Don’t want any more emails from xertis? <a href="https://xertis.vercel.app" class="unsubscribe"
                 target="_blank">Unsubscribe. </a>
     </footer>
 </body>
